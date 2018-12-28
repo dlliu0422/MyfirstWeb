@@ -2,53 +2,133 @@
 <html>
       <head>
               <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 			  <title>Example document</title>
-			  <link rel=stylesheet type="text/css" href="css/screen.css">
+              <link rel=stylesheet type="text/css" href="css/screen.css">
+              <script language="JavaScript" 
+                    src="scripts/main.js">
+              </script>
 			  <script type="text/javascript">
                   function createTable() {
        				var t = document.createElement('table');
-       				for (var i = 0; i < 20; i++) {
-        				var r = t.insertRow();
-        				for (var j = 0; j < 5; j++) {
+       				for (var i = 0; i < 5; i++) {
+                           var r=t.insertRow();
+        				for (var j = 0; j < 10; j++) {
          					var c = r.insertCell();
-         					c.innerHTML = i + ',' + j;
+                             c.innerHTML = i + ',' + j;
         				}
        				}
-      				document.getElementById('table1').appendChild(t);
-					t.setAttribute('border', '1');
+                    document.getElementById('table1').appendChild(t);
+                    t.setAttribute('border', '10');
 					document.getElementById("H3").innerText="New text!";
    					}
             </script>
+            <style>
+                .content{
+                    width: 1000px;margin-left: auto;margin-right: auto
+                }
+                .block {
+                    width: 280px;margin: 10px;padding: 10px;background-color: white;
+                    display:inline-block;vertical-align: top;
+                    text-align: center;
+                }
+                .title{
+                    font-weight: bold;
+                }
+                @media screen and (max-width:600px)
+                {
+                    .content {width:100%}
+                }
+            </style>
+
        </head>
-     <body background="images/Bear.jpg">
+     <body bgcolor=#888888>
             <header>
                     <h1><a href="#">Welcome to my page</a></h1>
             </header>
            <nav>
-                <ul>
+                <ul class="menu">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Contact</a>
+                        <ul>
+                            <li> <a herf="#">ABC</a></li>
+                            <li> <a herf="#">DEF</a></li>
+                        </ul>
+                    </li>    
                 </ul>
             </nav>
-            <section>
+            <section class="field">
                 <article>
+                    <form name="Info">
+                        <fieldset>
+                            <legend> Information</legend>
+                        <ol>
+                            
+                            <li>
+                                  <label for="user name">姓名</label>
+                                  <input id="name" type="text" placeholder="王小明" required >                                  
+                            </li>
+                            <li>
+                                <label for=mail>信箱位置</label>
+                                <input id="email" type="email" placeholder="example@gmail.com"  autocomplete="on" required>
+                            </li>
+                        </ol>
+                        </fieldset>
+                        <fieldset>
+                            <legend>訂購資訊</legend>
+                        <ol>
+                            <li>
+                                <label for="num">數量</label>
+                                <input id= "quantity" type="number" min="1" max="100" value="1" >
+                            </li>
+                            <li>
+                                <label for="num">金額</label>
+                                <input type="range" min="1" max="100" step="2" value="1">
+                            </li>
+                                <label for="date">日期</label>
+                                <input id="datetime" type="datetime-local" required value="2018-06-12T19:30">
+                            <li>
+                                <label for="color">顏色</label>
+                                <input type="text" list="Mycolor" required>
+                                <datalist id="Mycolor">
+                                    <option value="Black" lable="黑色"></option>
+                                    <option value="white" lable="白色"></option>
+                                </datalist>
+                            </li>    
+                            <li>
+                                <lable for= "payway">"付費方式"</lable><br>
+                                <input type="radio" name="pay" value="chash">現金<br>
+                                <input type="radio" name="pay" value="VISA">VISA<br>
+                                <input type="radio" name="pay" value="ATM">ATM<br>
+                            </li>
+                        </ol>
+                    </fieldset>
+                    <fieldset>
+                        <button id="submit_button"  onclick="submitfunction()" type="submit"> 提交</button>
+                    </fieldset>
+                    </form>
+                </article>
+            </section>
                     <header>
 						<h3><a href="#">Article 1</a></h3>
                     </header>
+
                     <section>
-                        <p id="H3">Lorem ipsum...</p>
+                        <p id="H3"  style="font-weight: normal; color: #99cc00; font-family: Raleway; font-size: 14pt;">Lorem ipsum...</p>
                     </section>
+
                 </article>
                 <article>
                     <header>
                         <h3><a href="#">Article 2</a></h3>
                     </header>
                     <section>
-                        <p>Lorem ipsum...</p>
+                        <div class="move"> ABC
+                            <p>Lorem ipsum...</p>
+                        </div>
                     </section>
-                </article>
-          	</section>
+
           	<aside>
 	         <h1><a href="#">Aside content</a></h1>
                 Lorem ipsum dolor sit amet..
@@ -58,9 +138,44 @@
                     Contact us at:<br />
                     <a href="/www.gazpo.com">Gazpo.com
                 </address>
-			</footer>
-			<div id="table1">
-			</div>
+            </footer>
+            <div id="text" style="width:30%; text-align: center">
+                <p id="rounded" style="position: relative; left:30%"">Rounded corners!</p>
+                <p>Rounded corners for an element with a border:</p>
+            </div>
+
+            <div class="content" >
+                <div class="block">
+                    <div class="title"> Block 1
+                        <div>test 1-1</div>
+                        <div>test 1-2</div>
+                        <div>test 1-3</div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="title"> Block 2
+                        <div>test 2-1</div>
+                        <div>test 2-2</div>
+                        <div>test 3-3</div>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="title"> Block 3
+                        <div>test 3-1</div>
+                        <div>test 3-2</div>
+                        <div>test 3-3</div>
+                    </div>
+                </div>
+            </div>
+            <!--felx如何解決並排-->
+            <main>
+                <div class="item">test 1 <br> Today is Goodday</div>
+                <div class="item">test 2</div>
+                <div class="item">test 3</div>
+            </main>
+
+
+            <div id="table1">
 			<script>
 				createTable();
 			</script>
